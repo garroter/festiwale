@@ -135,7 +135,6 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'upload/')
 MEDIA_URL = 'upload/'
-print(MEDIA_ROOT)
 
 THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
