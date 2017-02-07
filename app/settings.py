@@ -148,7 +148,6 @@ THUMBNAIL_PROCESSORS = (
 FILER_DEBUG = True
 
 
-
 FILER_STORAGES = {
     'public': {
         'main': {
