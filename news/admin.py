@@ -11,12 +11,10 @@ class NewsAdminForm(forms.ModelForm):
 
 class NewsAdmin(admin.ModelAdmin):
 
-    #lista pol w gridzie
-    list_display = ('title', 'url')
     #pola w formularzu
     fieldsets = (
         ('', {
-            'fields': ('url', 'user', 'category', 'tags', 'title', 'body', 'pub_date', 'status'),
+            'fields': ('url', 'user', 'category', 'tags', 'festiwals', 'title', 'body', 'pub_date', 'status'),
         }),
         ('Media', {
             'classes': ('grp-collapse grp-closed',),
@@ -28,17 +26,25 @@ class NewsAdmin(admin.ModelAdmin):
         }),
       
     )
+   
+    #lista pol w gridzie
+    list_display = ('title', 'url', 'category', 'pub_date', 'status')
 
     #filtrowanie
-    list_filter = ('category__name',)
+    list_filter = ('category__name', 'status')
+
+    list_search = ['title']
+
+    #globalna wyszukiwarka
+    search_fields = ('title', 'url','category__name', 'status')
 
     prepopulated_fields = {'url': ('title',)}
 
-    raw_id_fields = ('category', 'tags')
+    raw_id_fields = ('category', 'tags', 'festiwals')
 
     autocomplete_lookup_fields = {
         'fk': ['category',],
-        'm2m': ['tags',],
+        'm2m': ['tags', 'festiwals'],
     }
 
     class StackedItemInline(admin.StackedInline):
