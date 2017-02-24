@@ -136,16 +136,15 @@ USE_TZ = True
 # upload files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/upload-files/
 
-STATIC_URL = '/upload/'
+STATIC_URL = '/assets/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "assets"),
-    os.path.join(BASE_DIR, "upload"),
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'upload/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'assets/')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-MEDIA_URL = 'upload/'
+MEDIA_URL = 'assets/'
 
 # FILER_CANONICAL_URL = '/upload/'
 
@@ -166,7 +165,7 @@ FILER_STORAGES = {
             'ENGINE': 'filer.storage.PublicFileSystemStorage',
             'OPTIONS': {
                 'location': MEDIA_ROOT,
-                'base_url': '/upload',
+                'base_url': '/assets',
             },
             'UPLOAD_TO': 'filer.utils.generate_filename.randomized',
             'UPLOAD_TO_PREFIX': 'media',
@@ -175,7 +174,7 @@ FILER_STORAGES = {
             'ENGINE': 'filer.storage.PublicFileSystemStorage',
             'OPTIONS': {
                 'location': MEDIA_ROOT,
-                'base_url': '/upload',
+                'base_url': '/assets',
             },
         },
     },
