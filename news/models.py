@@ -2,7 +2,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
-from festiwals.models import Festiwal
+from festivals.models import Festival
 from ckeditor_uploader.fields import RichTextUploadingField
 from filer.fields.image import FilerImageField
 
@@ -53,7 +53,7 @@ class News(models.Model):
     user = models.ForeignKey(User, verbose_name="Użytkownik", blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Kategoria", blank=True, null=True)
     tags = models.ManyToManyField(Tag, verbose_name="Tagi")
-    festiwals = models.ManyToManyField(Festiwal, verbose_name="Festiwale")
+    festivals = models.ManyToManyField(Festival, verbose_name="Festiwale")
     url = models.SlugField('url', unique_for_date='pub_date', blank=True)
     title = models.CharField(max_length=255, verbose_name="Tytuł", blank=True)
     body = RichTextUploadingField(blank=True)

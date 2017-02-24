@@ -84,7 +84,7 @@ class Artist(models.Model):
         return self.title
 
 
-class Festiwal(models.Model):
+class Festival(models.Model):
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Kategoria", blank=True, null=True)
     tags = models.ManyToManyField(Tag, verbose_name="Tagi")

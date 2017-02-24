@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'ckeditor_filebrowser_filer',
+    'festivals.apps.FestivalsConfig',
     'home.apps.HomeConfig',
-    'festiwals.apps.FestiwalsConfig',
     'news.apps.NewsConfig',
 ]
 

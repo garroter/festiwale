@@ -2,7 +2,7 @@ from django import forms
 from django.contrib import admin
 from ckeditor.widgets import CKEditorWidget
 
-from .models import Country, Category, Tag, Artist, Festiwal
+from .models import Country, Category, Tag, Artist, Festival
 
 class CountryAdmin(admin.ModelAdmin):
     
@@ -47,7 +47,7 @@ class ArtistAdmin(admin.ModelAdmin):
     search_fields = ('title', 'status',)
 
 
-class FestiwalAdmin(admin.ModelAdmin):
+class FestivalAdmin(admin.ModelAdmin):
 
     change_list_template = "admin/change_list_filter_sidebar.html"
 
@@ -100,4 +100,4 @@ admin.site.register(Country, CountryAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Artist, ArtistAdmin)
 admin.site.register(Tag, TagAdmin)
-admin.site.register(Festiwal, FestiwalAdmin)
+admin.site.register(Festival, FestivalAdmin)

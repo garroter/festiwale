@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class FestiwalsConfig(AppConfig):
-    name = 'festiwals'
+class FestivalsConfig(AppConfig):
+    name = 'festivals'
     verbose_name = 'Festiwale'

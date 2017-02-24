@@ -66,11 +66,11 @@ class NewsAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {'url': ('title',)}
 
-    raw_id_fields = ('category', 'tags', 'festiwals',)
+    raw_id_fields = ('category', 'tags', 'festivals',)
 
     autocomplete_lookup_fields = {
         'fk': ['category',],
-        'm2m': ['tags', 'festiwals',],
+        'm2m': ['tags', 'festivals',],
     }
 
     class StackedItemInline(admin.StackedInline):
