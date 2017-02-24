@@ -1,3 +1,5 @@
+*.pyc
+*.pyo
 .vscode
 upload/
 app/settings.py
