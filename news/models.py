@@ -9,11 +9,12 @@ from filer.fields.image import FilerImageField
 
 class Category(models.Model):
 
-    name = models.CharField(max_length=255, verbose_name="Nazwa")
+    name = models.CharField(max_length=255, verbose_name="Kategoria")
+    status = models.BooleanField("Status")
 
     class Meta:
-        verbose_name = 'kategoria'
-        verbose_name_plural = 'kategorie'
+        verbose_name = 'Kategoria'
+        verbose_name_plural = 'Kategorie'
 
     @staticmethod
     def autocomplete_search_fields():
@@ -30,6 +31,7 @@ class Category(models.Model):
 class Tag(models.Model):
 
     name = models.CharField(max_length=255, verbose_name="Tag")
+    status = models.BooleanField("Status")
 
     class Meta:
         verbose_name = "Tag"

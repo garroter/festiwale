@@ -9,12 +9,36 @@ class NewsAdminForm(forms.ModelForm):
     body = forms.CharField(widget=CKEditorWidget())
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    
+    #lista pol w gridzie
+    list_display = ('name', 'status',)
+
+    list_search = ['name',]
+
+    #globalna wyszukiwarka
+    search_fields = ('name', 'status',)
+
+
+class TagAdmin(admin.ModelAdmin):
+    
+    #lista pol w gridzie
+    list_display = ('name', 'status',)
+
+    list_search = ['name',]
+
+    #globalna wyszukiwarka
+    search_fields = ('name', 'status',)
+
+
 class NewsAdmin(admin.ModelAdmin):
+    
+    change_list_template = "admin/change_list_filter_sidebar.html"
 
     #pola w formularzu
     fieldsets = (
         ('', {
-            'fields': ('url', 'user', 'category', 'tags', 'festiwals', 'title', 'body', 'pub_date', 'status'),
+            'fields': ('url', 'user', 'category', 'tags', 'festiwals', 'title', 'body', 'pub_date', 'status',),
         }),
         ('Media', {
             'classes': ('grp-collapse grp-closed',),
@@ -22,29 +46,31 @@ class NewsAdmin(admin.ModelAdmin):
         }),
         ('SEO', {
             'classes': ('grp-collapse grp-closed',),
-            'fields' : ('seo_title', 'seo_keywords', 'seo_description'),
+            'fields' : ('seo_title', 'seo_keywords', 'seo_description',),
         }),
       
     )
-   
+
+    list_editable = ('status', 'pub_date', 'url',)
+
     #lista pol w gridzie
-    list_display = ('title', 'url', 'category', 'pub_date', 'status')
+    list_display = ('title', 'url', 'category', 'pub_date', 'status',)
 
     #filtrowanie
-    list_filter = ('category__name', 'status')
+    list_filter = ('category__name', 'status',)
 
-    list_search = ['title']
+    list_search = ['title',]
 
     #globalna wyszukiwarka
-    search_fields = ('title', 'url','category__name', 'status')
+    search_fields = ('title', 'url','category__name', 'status',)
 
     prepopulated_fields = {'url': ('title',)}
 
-    raw_id_fields = ('category', 'tags', 'festiwals')
+    raw_id_fields = ('category', 'tags', 'festiwals',)
 
     autocomplete_lookup_fields = {
         'fk': ['category',],
-        'm2m': ['tags', 'festiwals'],
+        'm2m': ['tags', 'festiwals',],
     }
 
     class StackedItemInline(admin.StackedInline):
@@ -66,7 +92,7 @@ class NewsAdmin(admin.ModelAdmin):
         return instance
 
 
-admin.site.register(Category)
-admin.site.register(Tag)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Tag, TagAdmin)
 admin.site.register(News, NewsAdmin)
 
