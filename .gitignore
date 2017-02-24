@@ -1,3 +1,4 @@
 .vscode
 upload/
 app/settings.py
+__pycache__/
