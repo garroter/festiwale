@@ -1,6 +1,7 @@
+__pycache__
+upload/
 *.pyc
 *.pyo
 .vscode
-upload/
 app/settings.py
-__pycache__/
+passenger_wsgi.py
