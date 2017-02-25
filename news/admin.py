@@ -38,7 +38,7 @@ class NewsAdmin(admin.ModelAdmin):
     #pola w formularzu
     fieldsets = (
         ('', {
-            'fields': ('url', 'user', 'category', 'tags', 'festiwals', 'title', 'body', 'pub_date', 'status',),
+            'fields': ('url', 'user', 'category', 'tags', 'festivals', 'title', 'body', 'pub_date', 'status',),
         }),
         ('Media', {
             'classes': ('grp-collapse grp-closed',),
