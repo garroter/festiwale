@@ -3,10 +3,6 @@ jQuery(document).ready(function($){
 	//Gallery Validation
 
 
-    $(function() {
-	  $('#b-news').vTicker();
-	});
-
 	$('a[data-rel]').each(function () {
 		$(this).attr('rel', $(this).data('rel'));
 	});

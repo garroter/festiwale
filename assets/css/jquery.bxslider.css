@@ -31,7 +31,6 @@
 	display: block;
 }
 .banner .bxslider li{
-	max-height:505px;
 	overflow:hidden;
 }
 .bxslider{

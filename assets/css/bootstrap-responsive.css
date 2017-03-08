@@ -478,9 +478,9 @@
 	  padding:15px 5px;
 	  font-size:15px;
   }
-  .navigation ul li a{
-	  padding:14px 0px;
-  }
+ /* .navigation ul li a{
+	  padding:14px 30px;
+  }*/
   .tabs .nav-tabs > li > a{
 	  font-size:24px;
 	  padding:15px 6px;
