@@ -1,234 +1,364 @@
-{% load staticfiles %}
-{% load thumbnail %}
+{% load staticfiles %} {% load thumbnail %}
 
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% block seo %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% block seo %}
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Festiwale.pl</title>
-{% endblock %}
-
-{% block css %}
+    {% endblock %} {% block css %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/color-carrot.css' %}" rel="stylesheet">
     <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-    <link href="{% static 'css/chart.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/chart.css' %}" rel="stylesheet" />
     <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">
     <link href="{% static 'css/flexslider.css' %}" rel="stylesheet">
     <link href="{% static 'css/jquery.bxslider.css' %}" rel="stylesheet">
     <!--<link href="{% static 'css/ticker-style.css' %}" rel="stylesheet" type="text/css" />-->
-    <link href="{% static 'css/fullcalendar.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/fullcalendar.css' %}" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/skin.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/weather.css' %}" />
     <link rel="stylesheet" href="{% static 'css/prettyPhoto.css' %}" type="text/css" media="screen">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <!-- Pulled from http://code.google.com/p/html5shiv/ -->
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-{% endblock %}
+    {% endblock %}
 
 </head>
 
 <body>
-<!--WRAPPER START-->
-<div class="wrapper">
-	<!--HEADER START-->
-	<header>
-		<!--LOGO START-->
-		<div class="logo-container margin-bottom">
-			<div class="container">
-				<div class="logo">
-				<a href="index.html"><img src="/assets/images/logo.png" alt=""></a>
-				</div>
-				<!--<div class="add">
-				<a href="#"><img src="/assets/images/add.png" alt=""></a>
+    <!--WRAPPER START-->
+    <div class="wrapper">
+        <!--HEADER START-->
+        <header>
+            <!--LOGO START-->
+            <div class="logo-container margin-bottom">
+                <div class="container">
+                    <div class="logo">
+                        <a href="index.html"><img src="/static//assets/images/logo.png" alt=""></a>
+                    </div>
+                    <!--<div class="add">
+				<a href="#"><img src="/assets//static//assets/images/add.png" alt=""></a>
 				</div>-->
-                <!--MAIN NAVIGATION START-->
-                <div class="navigation">
-                    <div class="navbar navbar-inverse">
-                      <div class="navbar-inner" >
-                        <div class="container">
-                          <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
+                    <!--MAIN NAVIGATION START-->
+                    <div class="navigation">
+                        <div class="navbar navbar-inverse">
+                            <div class="navbar-inner">
+                                <div class="container">
+                                    <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                           </button>
-                          <div class="nav-collapse collapse">
-                            <ul class="nav">
-                                <li class="carrot first"><a href="blog.html">Strona główna</a></li>
-                                <li class="blue2"><a href="travel.html">Festiwale</a>
-                                     <ul class="blue2">
-                                        <li><a href="health.html">Najbliższe</a></li>
-                                        <li><a href="health-beauty.html">Najwyżej oceniane</a></li>
-                                     </ul>
-                                </li>
-                                <li class="red"><a href="showtime.html">Aktualności</a></li>
+                                    <div class="nav-collapse collapse">
+                                        <ul class="nav">
+                                            <li class="carrot first"><a href="blog.html">Strona główna</a></li>
+                                            <li class="blue2"><a href="travel.html">Festiwale</a>
+                                                <ul class="blue2">
+                                                    <li><a href="health.html">Najbliższe</a></li>
+                                                    <li><a href="health-beauty.html">Najwyżej oceniane</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="red"><a href="showtime.html">Aktualności</a></li>
 
-                                <li class="carrot"><a href="news-page.html">News</a></li>
-                                <li class="green"><a href="sports.html">Sports</a></li>
-                                <li class="pink"><a href="gosips.html">Gosips</a></li>
-                                <li class="purple"><a href="fashion.html">Fashion</a></li>
-                                <li class="carrot last"><a href="#">Pages</a>
-                                    <ul class="carrot">
-                                        <li><a href="404.html">404</a></li>
-                                        <li><a href="about-us.html">About Us</a></li>
-                                        <li><a href="admin.html">Admin</a></li>
-                                        <li><a href="author.html">Author</a></li>
-                                        <li><a href="coming-soon.html">Coming Soon</a></li>
-                                        <li><a href="travel.html">Travel</a></li>
-                                        <li><a href="search-result.html">Search Result</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="faqs.html">Faqs</a></li>
-                                        <li><a href="contact-us.html">Contact Us</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-                <!--MAIN NAVIGATION END-->
-			</div>
-		</div>
-		<!--LOGO END-->
-	</header>
-	<!--HEADER END-->
-	
-	
-
-    {% block content %}
-
-    {% endblock %}
-
-	<!--MAIN CONTATN START-->
-	<div class="main-contant">
-		<div class="container">
-			<!--TOP SECTION START-->
-			<section>
-            	<div class="row">
-                    
-                    <div class="span8">
-                        <!--SLIDER START-->
-                        <div class="page-slider">
-                            <div class=" slider flexslider">
-                                <ul class="slides">
-                                    {% for festival in festivals %}
-                                        <li>
-                                            <figure><img src="{% thumbnail festival.img 770x460 crop %}" alt="" >
-                                                <div class="caption">
-                                                    <p class="text">{{ festival.title|truncatechars:100 }}</p>
-                                                </div>
-                                            </figure>
-                                        </li>
-                                    {% endfor %}
-                                
-                                    <!-- items mirrored twice, total of 12 -->
-                                </ul>
-                                </div>
-                                <div id="carousel" class="flexslider">
-                                <ul class="slides">
-                                    {% for festival in festivals %}  
-                                        <li><img src="{% thumbnail festival.img 770x460 crop %}" /></li>
-                                    {% endfor %}
-                                
-                                    <!-- items mirrored twice, total of 12 -->
-                                </ul>
-                            </div>
-                        </div>
-                        <!--SLIDER END-->
-                    </div>
-                    <div class="span4">
-                        <div class="sidebar">
-                            <!--HOT NEW WIDGET START-->
-                    		<div class=" widget hot-news">
-                                {% for news in news %}
-                                    <figure class="hover-style">
-                                        <a href="#"> <img class="img-responsive" src="{% thumbnail news.img 370x202 crop %}" alt=""></a>
-                                    </figure>
-                                    <div class="text">
-                                        <h4>{{ news.title }}</h4>
-                                        <h5>This concerns her</h5>
-                                        <p>{{ news.body|truncatechars:150|safe }} ...</p>
-                                        <a href="#" class="color">więcej</a>
+                                            <li class="carrot"><a href="news-page.html">News</a></li>
+                                            <li class="green"><a href="sports.html">Sports</a></li>
+                                            <li class="pink"><a href="gosips.html">Gosips</a></li>
+                                            <li class="purple"><a href="fashion.html">Fashion</a></li>
+                                            <li class="carrot last"><a href="#">Pages</a>
+                                                <ul class="carrot">
+                                                    <li><a href="404.html">404</a></li>
+                                                    <li><a href="about-us.html">About Us</a></li>
+                                                    <li><a href="admin.html">Admin</a></li>
+                                                    <li><a href="author.html">Author</a></li>
+                                                    <li><a href="coming-soon.html">Coming Soon</a></li>
+                                                    <li><a href="travel.html">Travel</a></li>
+                                                    <li><a href="search-result.html">Search Result</a></li>
+                                                    <li><a href="cart.html">Cart</a></li>
+                                                    <li><a href="faqs.html">Faqs</a></li>
+                                                    <li><a href="contact-us.html">Contact Us</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
                                     </div>
-                                {% endfor %}
+                                </div>
                             </div>
-                            <!--HOT NEW WIDGET END-->
                         </div>
+                    </div>
+                    <!--MAIN NAVIGATION END-->
+                </div>
+            </div>
+            <!--LOGO END-->
+        </header>
+        <!--HEADER END-->
+        <div class="main-contant">
+            <div class="container">
+                <!--BANNER START-->
+                <div class="banner margin-bottom">
+                    <div id="slider33" class="flexslider">
+                        <ul class="slides">
+                            {% for news in news %}
+                            <li>
+                                <img src="{% thumbnail news.img 1145x300 crop %}" alt="" />
+                                <div class="banner-caps">
+                                    <h2>{{ news.title }}</h2>
+                                    <p> {{ news.body|striptags|truncatechars_html:100 }}</p>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
-			</section>
-			<!--TOP SECTION END-->
+                <!--BANNER END-->
 
-
-
-
-		</div>
-	</div>
-	<!--MAIN CONTATN END-->
-
-	<!--FOOTER START-->
-	<footer>
-        <div class="bottom-widgets">
-        	<div class="container">
-                <div class="row">
-                    <div class="span4">
-                    	<div class="widget text-widget">
-                        	<h2 class="h-style">About Ultimate</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec .gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec .</p>
-                            <p class="phon">Phone: 182 2569 5896</p>
-                            <p class="email">Email: info@modu.versus</p>
-                        </div>
-                    </div>
-                    <div class="span4">
-                    	<div class="widget widget-slider">
-                        	<h2 class="h-style">Magazine</h2>
-                            <div class="flexslider">
-                              <ul class="slides">
-                                <li><img src="/assets/images/footer-slider.jpg" alt=""></li>
-                                <li><img src="/assets/images/footer-slider2.jpg" alt=""></li>
-                                <li><img src="/assets/images/footer-slider3.jpg" alt=""></li>
-                              </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="span4">
-                    	<div class="widget widget-signin">
-                        	<h2 class="h-style">Sign In</h2>
-                            <ul>
-                            	<li>
-                                	<div class="input-icon user"></div>
-                                	<input type="text" class="input-block-level">
-                               	</li>
-                                <li>
-                                	<div class="input-icon password"></div>
-                                	<input type="password" class="input-block-level">
-                               	</li>
-                                <li><button class="btn-style">login</button></li>
-                                <li><a href="#" class="fb-btn">Login with Facebook</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>           
             </div>
         </div>
-        <div class="copy-rights">
-        	<p>COPYRIGHT © 2013  By <a href="www.crunchpress.com" target="_blank">CrunchPress.com</a></p>
-        </div>
-	</footer>
-	<!--FOOTER END-->
-</div>
-<!--WRAPPER END-->
 
-{% block js %}
+
+        {% block content %} {% endblock %}
+
+        <!--MAIN CONTATN START-->
+        <div class="main-contant">
+            <div class="container">
+                <section>
+                    <div class="row">
+                        <div class="span6">
+                            <div class="travel-section">
+                                <h2 class="h-style">Aktualności</h2>
+                                <article class="travel">
+                                    <div class="treval-thumb">
+                                        <figure class="hover-style">
+                                            <a href="#"><img alt="" src="{% thumbnail news.0.img 280x180 crop %}"></a>
+                                        </figure>
+                                        <div class="text">
+                                            <h2>{{ news.0.title }}</h2>
+                                            <ul class="post-comments">
+                                                <li><a href="#"><i class="fa fa-user"></i>{{ news.0.user.username }}</a></li>
+                                                <li><a href="#"><i class="fa fa-heart-o"></i>1205</a></li>
+                                                <li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>
+                                            </ul>
+                                            <p>{{ news.0.body|truncatechars:150|safe }}</p>
+                                            <a class="read-more" href="#">Find Out More</a>
+                                        </div>
+                                    </div>
+                                    <!--TRAVEL SECTION THUMB START-->
+                                    <div class="travel-listing">
+                                        <ul>
+                                            {% for news in news %}
+                                                {% if forloop.counter > 1 %}
+                                                    <li>
+                                                        <figure>
+                                                            <a href="#"><img alt="" src="{% thumbnail news.img 120x89 crop %}"></a>
+                                                        </figure>
+                                                        <div class="text">
+                                                            <h2><a href="#">{{ news.title }}</a></h2>
+                                                            <p>{{ news.body|truncatechars:100|safe }}</p>
+                                                            <ul class="post-comments">
+                                                                <li><a href="#">14th January 2013</a></li>
+                                                                <li><a href="#">32 Comments</a></li>
+                                                                <li>
+                                                                    <div class="rating">
+                                                                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                    </div>
+                                                                    124 Votes
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>        
+                                </article>
+                            </div>
+                        </div>
+
+                        <div class="span6">
+                             <div class="entertainment">
+                                <div class="row">
+                                    <div class="span6">
+                                        <h2 class="h-style">Najbliższe festiwale w Polsce</h2>
+                                        <div class="entertainment-sec">
+                                            <div class="row">
+                                                <div class="span3">
+                                                    <div class="business">
+                                                        <figure class="hover-style">
+                                                            <a href="#"><img src="/assets/images/entertainment.png" alt=""></a>
+                                                            <div class="like-icon"><i class="fa fa-heart-o"></i></div>
+                                                        </figure>
+                                                        <div class="text">
+                                                            <h4>Pricey fashion staples</h4>
+                                                            <div class="rating">
+                                                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                            </div>
+                                                            <ul class="post-comments">
+                                                                <li><a href="#"><i class="fa fa-user"></i>M-Elgendy</a></li>
+                                                                <li><a href="#"><i class="fa fa-heart-o"></i>1205</a></li>
+                                                                <li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>
+                                                            </ul>
+                                                            <p>Integer ornare libero nisi. Duis ac magna urna. Nulla facilisi. Phasellus at ante magna. Quisque nec porta nulla. Suspendisse nec orci vel elit aliquet blandit in non orci. Vivamus posuere dui eget iaculis, ligula arcu ultrices metus, ac venenatis dui leo ut odio. Phasellus a augue congue...</p>
+                                                            <a href="#" class="read-more">Find Out More</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="span3">
+                                                    <div class="sports-thumbs-list">
+                                                        <ul>
+                                                            <li>
+                                                                <div class="sports-thumbs">
+                                                                    <figure>
+                                                                        <a href="#"><img src="/assets/images/sports-thumb.png" alt=""></a>
+                                                                    </figure>
+                                                                    <div class="text">
+                                                                        <a href="#">Speaker Boehner Fails </a>
+                                                                        <p>12 december 2014</p>
+                                                                        <div class="rating">
+                                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="sports-thumbs">
+                                                                    <figure>
+                                                                        <a href="#"><img src="/assets/images/sports-thumb4.png" alt=""></a>
+                                                                    </figure>
+                                                                    <div class="text">
+                                                                        <a href="#">Speaker Boehner Fails </a>
+                                                                        <p>12 december 2014</p>
+                                                                        <div class="rating">
+                                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="sports-thumbs">
+                                                                    <figure>
+                                                                        <a href="#"><img src="/assets/images/sports-thumb2.png" alt=""></a>
+                                                                    </figure>
+                                                                    <div class="text">
+                                                                        <a href="#">Speaker Boehner Fails </a>
+                                                                        <p>12 december 2014</p>
+                                                                        <div class="rating">
+                                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="sports-thumbs">
+                                                                    <figure>
+                                                                        <a href="#"><img src="/assets/images/sports-thumb3.png" alt=""></a>
+                                                                    </figure>
+                                                                    <div class="text">
+                                                                        <a href="#">Speaker Boehner Fails </a>
+                                                                        <p>12 december 2014</p>
+                                                                        <div class="rating">
+                                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="sports-thumbs">
+                                                                    <figure>
+                                                                        <a href="#"><img src="/assets/images/sports-thumb4.png" alt=""></a>
+                                                                    </figure>
+                                                                    <div class="text">
+                                                                        <a href="#">Speaker Boehner Fails </a>
+                                                                        <p>12 december 2014</p>
+                                                                        <div class="rating">
+                                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="span2 visible-desktop">
+                                        <div class="new-ad">
+                                            <img alt="" src="/assets/images/new-ad2.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+            </div>
+        </div>
+        <!--MAIN CONTATN END-->
+
+        <!--FOOTER START-->
+        <footer>
+            <div class="bottom-widgets">
+                <div class="container">
+                    <div class="row">
+                        <div class="span4">
+                            <div class="widget text-widget">
+                                <h2 class="h-style">About Ultimate</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec .gravida pellentesque urna varius vitae.
+                                    Sed dui lorem, adipiscing in adipiscing et, interdum nec .</p>
+                                <p class="phon">Phone: 182 2569 5896</p>
+                                <p class="email">Email: info@modu.versus</p>
+                            </div>
+                        </div>
+                        <div class="span4">
+                            <div class="widget widget-slider">
+                                <h2 class="h-style">Magazine</h2>
+                                <div class="flexslider">
+                                    <ul class="slides">
+                                        <li><img src="/assets//static//assets/images/footer-slider.jpg" alt=""></li>
+                                        <li><img src="/assets//static//assets/images/footer-slider2.jpg" alt=""></li>
+                                        <li><img src="/assets//static//assets/images/footer-slider3.jpg" alt=""></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span4">
+                            <div class="widget widget-signin">
+                                <h2 class="h-style">Sign In</h2>
+                                <ul>
+                                    <li>
+                                        <div class="input-icon user"></div>
+                                        <input type="text" class="input-block-level">
+                                    </li>
+                                    <li>
+                                        <div class="input-icon password"></div>
+                                        <input type="password" class="input-block-level">
+                                    </li>
+                                    <li><button class="btn-style">login</button></li>
+                                    <li><a href="#" class="fb-btn">Login with Facebook</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copy-rights">
+                <p>COPYRIGHT © 2013 By <a href="www.crunchpress.com" target="_blank">CrunchPress.com</a></p>
+            </div>
+        </footer>
+        <!--FOOTER END-->
+    </div>
+    <!--WRAPPER END-->
+
+    {% block js %}
     <script src="{% static 'js/jquery-1.10.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/jquery.vticker.min.js' %}" type="text/javascript"></script>
@@ -241,6 +371,7 @@
     <script src="{% static 'js/jquery.easy-pie-chart.js' %}"></script>
     <script src="{% static 'js/jquery.prettyPhoto.js' %}" type="text/javascript" charset="utf-8"></script>
     <script src="{% static 'js/functions.js' %}"></script>
-{% endblock %}
+    {% endblock %}
 </body>
+
 </html>

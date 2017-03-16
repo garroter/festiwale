@@ -64,15 +64,20 @@ class News(models.Model):
     seo_description = models.TextField(verbose_name="Seo opis :)", blank=True)
     status = models.BooleanField("Status")
 
+
     class Meta:
         verbose_name = 'Artykuł'
         verbose_name_plural = 'Artykuły'
+
 
     def __str__(self):
         return self.title
 
     def __unicode__(self):
         return self.title
+    
+    def available(self):
+        return News.objects.filter(status=1)
 
 
 

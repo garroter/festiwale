@@ -1,6 +1,6 @@
 __pycache__
 upload/
-assets/filer_public_thumbnails/
+public/assets/
 *.pyc
 *.pyo
 .vscode

@@ -8,6 +8,7 @@ jQuery(document).ready(function($){
 	});
 	
 	jQuery(document).ready(function() {
+    console.log('asad');
 		jQuery('.mycarousel').jcarousel({
     	wrap: 'circular'
     });

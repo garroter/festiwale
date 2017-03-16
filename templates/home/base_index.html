@@ -1,5 +1,4 @@
-{% load staticfiles %}
-{% load thumbnail %}
+{% load staticfiles %} {% load thumbnail %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,12 +7,10 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    {% block seo %}
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <title>Blog Home - Start Bootstrap Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> {% block seo %}
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Blog Home - Start Bootstrap Template</title>
     {% endblock %}
 
     <!-- Bootstrap Core CSS -->
@@ -26,9 +23,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    {% block css %}
-
-    {% endblock %}
+    {% block css %} {% endblock %}
 
 </head>
 
@@ -78,29 +73,24 @@
                     Siema siema !
                     <small>Secondary Text</small>
                 </h1>
-                {% block content %}
-                    
-                    {% for news in news %}
+                {% block content %} {% for news in news %}
 
-                        <h2>
-                            <a href="#">{{ news.title }}</a>
-                        </h2>
-                        <p class="lead">
-                            by <a href="index.php">{{ news.user.username }}</a>
-                        </p>
-                        <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
-                        <hr>
-                        
-                        <img class="img-responsive" src="{% thumbnail news.img 900x300 crop %}" alt="">
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
-                        <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <h2>
+                    <a href="#">{{ news.title }}</a>
+                </h2>
+                <p class="lead">
+                    by <a href="index.php">{{ news.user.username }}</a>
+                </p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
+                <hr>
 
-                        <hr>
+                <img class="img-responsive" src="{% thumbnail news.img 900x300 crop %}" alt="">
+                <hr>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.
+                </p>
+                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-                    {% endfor %}
-
-                {% endblock %}
+                <hr> {% endfor %} {% endblock %}
 
                 <!-- First Blog Post -->
                 <h2>
@@ -113,7 +103,8 @@
                 <hr>
                 <img class="img-responsive" src="http://placehold.it/900x300" alt="">
                 <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.
+                </p>
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
@@ -241,8 +232,8 @@
     <!-- /.container -->
 
     {% block js %}
-        <script src="{% static 'js/jquery.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     {% endblock %}
 
 </body>
