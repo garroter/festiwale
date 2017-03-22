@@ -4,6 +4,10 @@ from ckeditor.widgets import CKEditorWidget
 
 from .models import Country, Category, Tag, Artist, Festival
 
+class FestivalAdminForm(forms.ModelForm):
+    
+    description = forms.CharField(widget=CKEditorWidget())
+
 class CountryAdmin(admin.ModelAdmin):
     
     #lista pol w gridzie
@@ -54,7 +58,7 @@ class FestivalAdmin(admin.ModelAdmin):
     #pola w formularzu
     fieldsets = (
         ('', {
-            'fields': ('url', 'category', 'tags', 'artists', 'title', 'description', 'pub_date_start', 'pub_date_end',),
+            'fields': ('user', 'url', 'country', 'category', 'tags', 'artists', 'title', 'description', 'pub_date_start', 'pub_date_end',),
         }),
         ('Media', {
             'classes': ('grp-collapse grp-closed',),
@@ -82,10 +86,10 @@ class FestivalAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {'url': ('title',)}
 
-    raw_id_fields = ('category', 'tags', 'artists',)
+    raw_id_fields = ('category', 'country', 'tags', 'artists',)
 
     autocomplete_lookup_fields = {
-        'fk': ['category',],
+        'fk': ['category', 'country',],
         'm2m': ['tags', 'artists', ],
     }
 
@@ -94,6 +98,18 @@ class FestivalAdmin(admin.ModelAdmin):
 
     class TabularItemInline(admin.TabularInline):
         classes = ('grp-collapse grp-open',)
+    
+    form = FestivalAdminForm
+
+    # nadpisujemy pole uzytkkownika jesli nie zostalo wybrane
+    def save_model(self, request, instance, form, change):
+        user = request.user
+        instance = form.save(commit=False)
+        if not change or not instance.user:
+            instance.user = user
+        instance.save()
+        form.save_m2m()
+        return instance
 
 
 admin.site.register(Country, CountryAdmin)

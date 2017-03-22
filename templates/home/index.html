@@ -103,13 +103,19 @@
                 <div class="banner margin-bottom">
                     <div id="slider33" class="flexslider">
                         <ul class="slides">
-                            {% for news in news %}
+                            {% for slider in slider %}
                             <li>
-                                <img src="{% thumbnail news.img 1145x300 crop %}" alt="" />
-                                <div class="banner-caps">
-                                    <h2>{{ news.title }}</h2>
-                                    <p> {{ news.body|striptags|truncatechars_html:100 }}</p>
-                                </div>
+                                 {% if slider.url %}
+                                    <a href="{{ slider.url }}">
+                                 {% endif %}       
+                                    <img src="{% thumbnail slider.img 1145x300 crop %}" alt="" />
+                                    <div class="banner-caps">
+                                        <h2>{{ slider.title }}</h2>
+                                        <p>{{ slider.description|striptags|truncatechars_html:100 }}</p>
+                                    </div>
+                                  {% if slider.url %}
+                                    </a>
+                                  {% endif %}  
                             </li>
                             {% endfor %}
                         </ul>
@@ -119,7 +125,6 @@
 
             </div>
         </div>
-
 
         {% block content %} {% endblock %}
 
@@ -132,21 +137,23 @@
                             <div class="travel-section">
                                 <h2 class="h-style">Aktualności</h2>
                                 <article class="travel">
+                                    {% with news|first as news %}
                                     <div class="treval-thumb">
                                         <figure class="hover-style">
-                                            <a href="#"><img alt="" src="{% thumbnail news.0.img 280x180 crop %}"></a>
+                                            <a href="#"><img alt="" src="{% thumbnail news.img 280x180 crop %}"></a>
                                         </figure>
                                         <div class="text">
-                                            <h2>{{ news.0.title }}</h2>
+                                            <h2>{{ news.title }}</h2>
                                             <ul class="post-comments">
-                                                <li><a href="#"><i class="fa fa-user"></i>{{ news.0.user.username }}</a></li>
-                                                <li><a href="#"><i class="fa fa-heart-o"></i>1205</a></li>
-                                                <li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>
+                                                <li><a href="#"><i class="fa fa-user"></i>{{ news.user.username }}</a></li>
+                                                <li><i class="fa fa-clock-o"></i>{{ news.pub_date|date:'Y-m-d H:i' }}</li>
+                                                <!--<li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>-->
                                             </ul>
-                                            <p>{{ news.0.body|truncatechars:150|safe }}</p>
-                                            <a class="read-more" href="#">Find Out More</a>
+                                            <p>{{ news.body|truncatechars:150|safe }}</p>
+                                            <a class="read-more" href="#">więcej</a>
                                         </div>
                                     </div>
+                                    {% endwith %}
                                     <!--TRAVEL SECTION THUMB START-->
                                     <div class="travel-listing">
                                         <ul>
@@ -160,14 +167,14 @@
                                                             <h2><a href="#">{{ news.title }}</a></h2>
                                                             <p>{{ news.body|truncatechars:100|safe }}</p>
                                                             <ul class="post-comments">
-                                                                <li><a href="#">14th January 2013</a></li>
-                                                                <li><a href="#">32 Comments</a></li>
+                                                                <li><a href="#">{{ news.pub_date|date:'Y-m-d H:i' }}</a></li>
+                                                                <!--<li><a href="#">32 Comments</a></li>
                                                                 <li>
                                                                     <div class="rating">
                                                                         <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                                                                     </div>
                                                                     124 Votes
-                                                                </li>
+                                                                </li>-->
                                                             </ul>
                                                         </div>
                                                     </li>
@@ -187,118 +194,142 @@
                                         <div class="entertainment-sec">
                                             <div class="row">
                                                 <div class="span3">
-                                                    <div class="business">
-                                                        <figure class="hover-style">
-                                                            <a href="#"><img src="/assets/images/entertainment.png" alt=""></a>
-                                                            <div class="like-icon"><i class="fa fa-heart-o"></i></div>
-                                                        </figure>
-                                                        <div class="text">
-                                                            <h4>Pricey fashion staples</h4>
-                                                            <div class="rating">
-                                                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                    {% with festivals_pl|first as festival %}
+                                                        <div class="business">
+                                                            <figure class="hover-style">
+                                                                <a href="#"><img src="{% thumbnail festival.img 267x208 crop %}" alt=""></a>
+                                                                <!--<div class="like-icon"><i class="fa fa-heart-o"></i></div>-->
+                                                            </figure>
+                                                            <div class="text">
+                                                                <h4>{{ festival.title }}</h4>
+                                                                <!--<div class="rating">
+                                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                </div>-->
+                                                                <ul class="post-comments">
+                                                                    <li><a href="#"><i class="fa fa-user"></i>{{ festival.user.username }}</a></li>
+                                                                    <li><a href="#"><i class="fa fa-clock-o"></i>{{ festival.pub_date_start|date:'Y-m-d H:i' }}</a></li>
+                                                                    <!--<li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>-->
+                                                                </ul>
+                                                                <p>{{ festival.description|truncatechars:100|safe }}</p>
+                                                                <a href="#" class="read-more">więcej</a>
                                                             </div>
-                                                            <ul class="post-comments">
-                                                                <li><a href="#"><i class="fa fa-user"></i>M-Elgendy</a></li>
-                                                                <li><a href="#"><i class="fa fa-heart-o"></i>1205</a></li>
-                                                                <li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>
-                                                            </ul>
-                                                            <p>Integer ornare libero nisi. Duis ac magna urna. Nulla facilisi. Phasellus at ante magna. Quisque nec porta nulla. Suspendisse nec orci vel elit aliquet blandit in non orci. Vivamus posuere dui eget iaculis, ligula arcu ultrices metus, ac venenatis dui leo ut odio. Phasellus a augue congue...</p>
-                                                            <a href="#" class="read-more">Find Out More</a>
                                                         </div>
-                                                    </div>
+                                                    {% endwith %}
                                                 </div>
                                                 <div class="span3">
                                                     <div class="sports-thumbs-list">
                                                         <ul>
-                                                            <li>
-                                                                <div class="sports-thumbs">
-                                                                    <figure>
-                                                                        <a href="#"><img src="/assets/images/sports-thumb.png" alt=""></a>
-                                                                    </figure>
-                                                                    <div class="text">
-                                                                        <a href="#">Speaker Boehner Fails </a>
-                                                                        <p>12 december 2014</p>
-                                                                        <div class="rating">
-                                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                            {% for festival in festivals_pl %}
+                                                                {% if forloop.counter > 1 %}
+                                                                    <li>
+                                                                        <div class="sports-thumbs">
+                                                                            <figure>
+                                                                                <a href="#"><img src="{% thumbnail festival.img 79x69 crop %}" alt=""></a>
+                                                                            </figure>
+                                                                            <div class="text">
+                                                                                <a href="#">{{ festival.title }}</a>
+                                                                                <p>{{ festival.pub_date_start|date:'Y-m-d H:i' }}</p>
+                                                                                <!--<div class="rating">
+                                                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                                </div>-->
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="sports-thumbs">
-                                                                    <figure>
-                                                                        <a href="#"><img src="/assets/images/sports-thumb4.png" alt=""></a>
-                                                                    </figure>
-                                                                    <div class="text">
-                                                                        <a href="#">Speaker Boehner Fails </a>
-                                                                        <p>12 december 2014</p>
-                                                                        <div class="rating">
-                                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="sports-thumbs">
-                                                                    <figure>
-                                                                        <a href="#"><img src="/assets/images/sports-thumb2.png" alt=""></a>
-                                                                    </figure>
-                                                                    <div class="text">
-                                                                        <a href="#">Speaker Boehner Fails </a>
-                                                                        <p>12 december 2014</p>
-                                                                        <div class="rating">
-                                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="sports-thumbs">
-                                                                    <figure>
-                                                                        <a href="#"><img src="/assets/images/sports-thumb3.png" alt=""></a>
-                                                                    </figure>
-                                                                    <div class="text">
-                                                                        <a href="#">Speaker Boehner Fails </a>
-                                                                        <p>12 december 2014</p>
-                                                                        <div class="rating">
-                                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="sports-thumbs">
-                                                                    <figure>
-                                                                        <a href="#"><img src="/assets/images/sports-thumb4.png" alt=""></a>
-                                                                    </figure>
-                                                                    <div class="text">
-                                                                        <a href="#">Speaker Boehner Fails </a>
-                                                                        <p>12 december 2014</p>
-                                                                        <div class="rating">
-                                                                            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
+                                                                    </li>
+                                                                {% endif %}
+                                                            {% endfor %}    
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="span2 visible-desktop">
-                                        <div class="new-ad">
-                                            <img alt="" src="/assets/images/new-ad2.jpg">
+                                </div>
+                            </div>
+                            <div class="entertainment">
+                                <div class="row">
+                                    <div class="span6">
+                                        <h2 class="h-style">Najbliższe festiwale w Europie</h2>
+                                        <div class="entertainment-sec">
+                                            <div class="row">
+                                                <div class="span3">
+                                                    {% with festivals_all|first as festival %}
+                                                        <div class="business">
+                                                            <figure class="hover-style">
+                                                                <a href="#"><img src="{% thumbnail festival.img 267x208 crop %}" alt=""></a>
+                                                                <!--<div class="like-icon"><i class="fa fa-heart-o"></i></div>-->
+                                                            </figure>
+                                                            <div class="text">
+                                                                <h4>{{ festival.title }}</h4>
+                                                                <!--<div class="rating">
+                                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                </div>-->
+                                                                <ul class="post-comments">
+                                                                    <li><a href="#"><i class="fa fa-user"></i>{{ festival.user.username }}</a></li>
+                                                                    <li><a href="#"><i class="fa fa-clock-o"></i>{{ festival.pub_date_start|date:'Y-m-d H:i' }}</a></li>
+                                                                    <!--<li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>-->
+                                                                </ul>
+                                                                <p>{{ festival.description|truncatechars:100|safe }}</p>
+                                                                <a href="#" class="read-more">więcej</a>
+                                                            </div>
+                                                        </div>
+                                                    {% endwith %}
+                                                </div>
+                                                <div class="span3">
+                                                    <div class="sports-thumbs-list">
+                                                        <ul>
+                                                            {% for festival in festivals_all %}
+                                                                {% if forloop.counter > 1 %}
+                                                                    <li>
+                                                                        <div class="sports-thumbs">
+                                                                            <figure>
+                                                                                <a href="#"><img src="{% thumbnail festival.img 79x69 crop %}" alt=""></a>
+                                                                            </figure>
+                                                                            <div class="text">
+                                                                                <a href="#">{{ festival.title }}</a>
+                                                                                <p>{{ festival.pub_date_start|date:'Y-m-d H:i' }}</p>
+                                                                                <!--<div class="rating">
+                                                                                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                                                                </div>-->
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                {% endif %}
+                                                            {% endfor %}    
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
+
+
                         </div>
                     </div>
                 </section>
-
-
-
+                <!--GALLERY SECTION START-->
+                <section>
+                    <div class="image-gallery">
+                        <h2 class="h-style">Najczęściej występujący artyści</h2>
+                        <ul class="mycarousel jcarousel-skin-tango gallery">
+                            {% for artist in artists %}
+                                <li>
+                                    <img src="{% thumbnail artist.img 220x220 crop %}" alt="" >
+                                    <div class="caption">
+                                        <a href="#"><i class="fa fa-link"></i></a>
+                                        <a href="images/gallery-image.png" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
+                                        <h4>{{ artist.title }}</h4>
+                                        <p>{{ artist.description|truncatechars:100|safe }}</p>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>			
+                </section>
+                <!--GALLERY SECTION END-->
 
             </div>
         </div>

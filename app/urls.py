@@ -28,6 +28,11 @@ urlpatterns = [
     url(r'^filebrowser_filer/', include('ckeditor_filebrowser_filer.urls')),
 ]
 
-if settings.DEBUG is True:
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 

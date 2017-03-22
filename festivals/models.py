@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
 from filer.fields.image import FilerImageField
 
@@ -76,6 +77,7 @@ class Artist(models.Model):
     class Meta:
         verbose_name = 'Artysta'
         verbose_name_plural = 'Artyści'
+       
 
     def __str__(self):
         return self.title
@@ -86,7 +88,9 @@ class Artist(models.Model):
 
 class Festival(models.Model):
 
+    user = models.ForeignKey(User, verbose_name="Użytkownik", blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Kategoria", blank=True, null=True)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name="Kraj", blank=True, null=True)
     tags = models.ManyToManyField(Tag, verbose_name="Tagi")
     artists = models.ManyToManyField(Artist, verbose_name="Artyści")
     url = models.SlugField('url', unique_for_date='pub_date_start', blank=True)
@@ -102,6 +106,8 @@ class Festival(models.Model):
     class Meta:
         verbose_name = "Festiwal"
         verbose_name_plural = "Festiwale"
+        ordering = ("pub_date_start",)
+        get_latest_by = "pub_date_start"
 
     @staticmethod
     def autocomplete_search_fields():

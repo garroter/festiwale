@@ -75,9 +75,7 @@ class News(models.Model):
 
     def __unicode__(self):
         return self.title
-    
-    def available(self):
-        return News.objects.filter(status=1)
+
 
 
 
