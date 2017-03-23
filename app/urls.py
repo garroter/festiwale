@@ -19,10 +19,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^', include('home.urls')),
-    url(r'^festivals/', include('festivals.urls')),
-    url(r'^grappelli/', include('grappelli.urls')),
+    # url(r'^', include('home.urls')),
+    url(r'^', include('festivals.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^filer/', include('filer.urls')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^filebrowser_filer/', include('ckeditor_filebrowser_filer.urls')),

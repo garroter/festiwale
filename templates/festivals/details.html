@@ -1,0 +1,252 @@
+{% extends "index.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block slider %}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="main-contant">
+            <div class="container">
+                <div class="row">
+                    <div class="span8">
+                        <section class="event-listing">
+                            <!--EVENT LIST START-->
+                            <article>
+                                <figure>
+                                    <a href="#"><img src="{% thumbnail festival.img 770x380 crop %}" alt=""></a>
+                                    <div class="caption">
+                                        <div class="row-fluid">
+                                            <div class="span6">
+                                                <h2>{{ festival.title }}</h2>
+                                            </div>
+                                            {% comment %}<div class="span4"><div class="defaultCountdown"></div></div>
+                                            <div class="span2">
+                                                <p class="event-date">30th<br>JULY</p>
+                                            </div>{% endcomment %}
+                                        </div>
+                                    </div>
+                                </figure>
+                                <div class="text">
+                                    <ul class="admin-timing">
+                                        <li><a href="#"><i class="fa fa-user"></i>{{ festival.user.username }}</a></li>
+                                        <li><i class="fa fa-clock-o"></i>{{ festival.pub_date_start|date:'Y-m-d H:i' }}</li>
+                                        <li><a href="#"><i class="fa fa-map-marker"></i>{{ festival.country.name }}, {{ festival.address }}</a></li>
+                                    </ul>
+                                    <div class="admin-timing">
+                                        {% for artist in festival.artists.all %}
+                                            {{ artist.title }}
+                                        {% endfor %}
+                                    </div>
+                                    {{ festival.description|safe }}
+                                    <a href="#" class="btn-style">Buy Ticket</a>
+                                </div>
+                                <ul class="social-icons2">
+                                    <li><a class="facebook" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="github" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-github"></i></a></li>
+                                    <li><a class="linkedin" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a class="pinterest" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-pinterest"></i></a></li>
+                                    <li><a class="dribbble" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-dribbble"></i></a></li>
+                                    <li><a class="google" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a class="tumblr" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-tumblr"></i></a></li>
+                                    <li><a class="twitter" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="youtube" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-youtube-square"></i></a></li>
+                                </ul>
+                            </article>
+                            <!--EVENT LIST END-->                        
+                        </section>
+                        {% comment %}<section>
+                            <div class="comments">
+                                <h2>10 Comments</h2>
+                                <ul>
+                                    <!--LIST STYLE START-->
+                                    <li>
+                                        <figure>
+                                            <a href="#"><img src="images/comments-thumb.png" alt=""></a>
+                                        </figure>
+                                        <div class="comment-heading">
+                                            <h5><a href="#"> Jhon Doe</a></h5>
+                                            <p>26 June 2013, 15:20</p>
+                                            <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                        </div>
+                                        <div class="text">
+                                            <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                        </div>
+                                        <!--child list style-->
+                                        <ul>
+                                            <li>
+                                                <figure>
+                                                    <a href="#"><img src="images/comments-thumb.png" alt=""></a>
+                                                </figure>
+                                                <div class="comment-heading">
+                                                    <h5><a href="#"> Jhon Doe</a></h5>
+                                                    <p>26 June 2013, 15:20</p>
+                                                    <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                                </div>
+                                                <div class="text">
+                                                    <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <!--child list style-->
+                                    </li>
+                                    <!--LIST STYLE END-->
+                                    <!--LIST STYLE START-->
+                                    <li>
+                                        <figure>
+                                            <a href="#"><img src="images/comments-thumb.png" alt=""></a>
+                                        </figure>
+                                        <div class="comment-heading">
+                                            <h5><a href="#"> Jhon Doe</a></h5>
+                                            <p>26 June 2013, 15:20</p>
+                                            <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                        </div>
+                                        <div class="text">
+                                            <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                        </div>
+                                        <!--child list style-->
+                                        <ul>
+                                            <li>
+                                                <figure>
+                                                    <a href="#"><img src="images/comments-thumb.png" alt=""></a>
+                                                </figure>
+                                                <div class="comment-heading">
+                                                    <h5><a href="#"> Jhon Doe</a></h5>
+                                                    <p>26 June 2013, 15:20</p>
+                                                    <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                                </div>
+                                                <div class="text">
+                                                    <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a href="#"><img src="images/comments-thumb.png" alt=""></a>
+                                                </figure>
+                                                <div class="comment-heading">
+                                                    <h5><a href="#"> Jhon Doe</a></h5>
+                                                    <p>26 June 2013, 15:20</p>
+                                                    <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                                </div>
+                                                <div class="text">
+                                                    <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                                </div>
+                                                <ul>
+                                                    <li>
+                                                        <figure>
+                                                            <a href="#"><img src="images/comments-thumb.png" alt=""></a>
+                                                        </figure>
+                                                        <div class="comment-heading">
+                                                            <h5><a href="#"> Jhon Doe</a></h5>
+                                                            <p>26 June 2013, 15:20</p>
+                                                        </div>
+                                                        <div class="text">
+                                                            <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <!--child list style-->
+                                    </li>
+                                    <!--LIST STYLE END-->
+                                    <!--LIST STYLE START-->
+                                    <li>
+                                        <figure>
+                                            <a href="#"><img src="images/comments-thumb.png" alt=""></a>
+                                        </figure>
+                                        <div class="comment-heading">
+                                            <h5><a href="#"> Jhon Doe</a></h5>
+                                            <p>26 June 2013, 15:20</p>
+                                            <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                        </div>
+                                        <div class="text">
+                                            <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                        </div>
+                                    </li>
+                                    <!--LIST STYLE END-->
+                                    <!--LIST STYLE START-->
+                                    <li>
+                                        <figure>
+                                            <a href="#"><img src="images/comments-thumb.png" alt=""></a>
+                                        </figure>
+                                        <div class="comment-heading">
+                                            <h5><a href="#"> Jhon Doe</a></h5>
+                                            <p>26 June 2013, 15:20</p>
+                                            <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                        </div>
+                                        <div class="text">
+                                            <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                        </div>
+                                    </li>
+                                    <!--LIST STYLE END-->
+                                    <!--LIST STYLE START-->
+                                    <li>
+                                        <figure>
+                                            <a href="#"><img src="images/comments-thumb.png" alt=""></a>
+                                        </figure>
+                                        <div class="comment-heading">
+                                            <h5><a href="#"> Jhon Doe</a></h5>
+                                            <p>26 June 2013, 15:20</p>
+                                            <a href="#" class="reply"><i class="fa fa-undo"></i>Reply</a>
+                                        </div>
+                                        <div class="text">
+                                            <p>Duis dapibus aliquam mi, eget euismod sem scelerisque ut. Vivamus at elit quis urna adipiscing iaculis. Curabitur vitae velit in neque dictum blandit. Proin in iaculis neque. </p>
+                                        </div>
+                                    </li>
+                                    <!--LIST STYLE END-->
+                                </ul>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="leave-reply">
+                                <h2>Leave Comment</h2>
+                                <ul>
+                                    <li><input type="text" class="input-block-level" placeholder="Enter your Name"><i class="fa fa-user"></i></li>
+                                    <li><input type="text" class="input-block-level" placeholder="Enter E-mail ID"><i class="fa fa-envelope-o"></i></li>
+                                    <li><input type="text" class="input-block-level" placeholder="Website"><i class="fa fa-link"></i></li>
+                                    <li><textarea class="input-block-level"></textarea></li>
+                                    <li><a href="#" class="btn-style">Post Comment</a></li>
+                                </ul>
+                            </div>
+                        </section>{% endcomment %}
+                    </div>
+                    <div class="span4">
+                        <div class="sidebar">
+                        
+                            <!--NEW CATEGORIES WIDGET START-->
+                            <div class="widget widget-top3">
+                                <h2>Newsy festiwalu</h2>
+                                <ul>
+                                    {% for news in news %}
+                                        <li>
+                                            <figure>
+                                                <a href="#"><img alt="" src="{% thumbnail festival.img 105x56 crop %}"></a>
+                                            </figure>
+                                            <div class="text">
+                                                <a href="#">{{ news.title }}</a>
+                                                <p><span>{{ news.pub_date|date:'Y-m-d H:i' }}</span></p>
+                                            </div>
+                                        </li>
+                                    {% endfor %}                               
+                                </ul>
+                            </div>
+                            <!--NEW CATEGORIES WIDGET END-->
+                            <!--TAGS WIDGET START-->
+                            <div class="widget widget-tags">
+                                <h2>Tagi</h2>
+                                <ul>
+                                    {% for tag in festival.tags.all %}
+                                        <li><a href="#">{{ tag.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                           
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

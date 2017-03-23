@@ -1,32 +1,35 @@
-{% load staticfiles %} {% load thumbnail %}
+{% load staticfiles %}
+{% load thumbnail %}
 
 <!doctype html>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% block seo %}
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Festiwale.pl</title>
-    {% endblock %} {% block css %}
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/color-carrot.css' %}" rel="stylesheet">
-    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-    <link href="{% static 'css/chart.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">
-    <link href="{% static 'css/flexslider.css' %}" rel="stylesheet">
-    <link href="{% static 'css/jquery.bxslider.css' %}" rel="stylesheet">
-    <!--<link href="{% static 'css/ticker-style.css' %}" rel="stylesheet" type="text/css" />-->
-    <link href="{% static 'css/fullcalendar.css' %}" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/skin.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/weather.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/prettyPhoto.css' %}" type="text/css" media="screen">
-    <!-- Pulled from http://code.google.com/p/html5shiv/ -->
-    <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    {% block seo %}
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Festiwale.pl</title>
+    {% endblock %} 
+    {% block css %}
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <link href="{% static 'css/color-carrot.css' %}" rel="stylesheet">
+        <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+        <link href="{% static 'css/chart.css' %}" rel="stylesheet" />
+        <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">
+        <link href="{% static 'css/flexslider.css' %}" rel="stylesheet">
+        <link href="{% static 'css/jquery.bxslider.css' %}" rel="stylesheet">
+        <!--<link href="{% static 'css/ticker-style.css' %}" rel="stylesheet" type="text/css" />-->
+        <link href="{% static 'css/fullcalendar.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/skin.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/weather.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/prettyPhoto.css' %}" type="text/css" media="screen">
+        <!-- Pulled from http://code.google.com/p/html5shiv/ -->
+        <!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 
     {% endblock %}
 
@@ -44,7 +47,7 @@
                         <a href="index.html"><img src="/static//assets/images/logo.png" alt=""></a>
                     </div>
                     <!--<div class="add">
-				<a href="#"><img src="/assets//static//assets/images/add.png" alt=""></a>
+				<a href="#"><img src="/static/assets/assets/images/add.png" alt=""></a>
 				</div>-->
                     <!--MAIN NAVIGATION START-->
                     <div class="navigation">
@@ -97,6 +100,7 @@
             <!--LOGO END-->
         </header>
         <!--HEADER END-->
+        {% block slider %}
         <div class="main-contant">
             <div class="container">
                 <!--BANNER START-->
@@ -122,14 +126,13 @@
                     </div>
                 </div>
                 <!--BANNER END-->
-
             </div>
         </div>
-
-        {% block content %} {% endblock %}
+        {% endblock %}
 
         <!--MAIN CONTATN START-->
         <div class="main-contant">
+        {% block content %} 
             <div class="container">
                 <section>
                     <div class="row">
@@ -197,7 +200,7 @@
                                                     {% with festivals_pl|first as festival %}
                                                         <div class="business">
                                                             <figure class="hover-style">
-                                                                <a href="#"><img src="{% thumbnail festival.img 267x208 crop %}" alt=""></a>
+                                                                <a href="{{ festival.get_absolute_url }}"><img src="{% thumbnail festival.img 267x208 crop %}" alt=""></a>
                                                                 <!--<div class="like-icon"><i class="fa fa-heart-o"></i></div>-->
                                                             </figure>
                                                             <div class="text">
@@ -211,7 +214,7 @@
                                                                     <!--<li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>-->
                                                                 </ul>
                                                                 <p>{{ festival.description|truncatechars:100|safe }}</p>
-                                                                <a href="#" class="read-more">więcej</a>
+                                                                <a href="{{ festival.get_absolute_url }}" class="read-more">więcej</a>
                                                             </div>
                                                         </div>
                                                     {% endwith %}
@@ -224,10 +227,10 @@
                                                                     <li>
                                                                         <div class="sports-thumbs">
                                                                             <figure>
-                                                                                <a href="#"><img src="{% thumbnail festival.img 79x69 crop %}" alt=""></a>
+                                                                                <a href="{{ festival.get_absolute_url }}"><img src="{% thumbnail festival.img 79x69 crop %}" alt=""></a>
                                                                             </figure>
                                                                             <div class="text">
-                                                                                <a href="#">{{ festival.title }}</a>
+                                                                                <a href="{{ festival.get_absolute_url }}">{{ festival.title }}</a>
                                                                                 <p>{{ festival.pub_date_start|date:'Y-m-d H:i' }}</p>
                                                                                 <!--<div class="rating">
                                                                                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
@@ -332,9 +335,9 @@
                 <!--GALLERY SECTION END-->
 
             </div>
+        {% endblock %}
         </div>
         <!--MAIN CONTATN END-->
-
         <!--FOOTER START-->
         <footer>
             <div class="bottom-widgets">
@@ -354,9 +357,9 @@
                                 <h2 class="h-style">Magazine</h2>
                                 <div class="flexslider">
                                     <ul class="slides">
-                                        <li><img src="/assets//static//assets/images/footer-slider.jpg" alt=""></li>
-                                        <li><img src="/assets//static//assets/images/footer-slider2.jpg" alt=""></li>
-                                        <li><img src="/assets//static//assets/images/footer-slider3.jpg" alt=""></li>
+                                        <li><img src="/static/assets/assets/images/footer-slider.jpg" alt=""></li>
+                                        <li><img src="/static/assets/assets/images/footer-slider2.jpg" alt=""></li>
+                                        <li><img src="/static/assets/assets/images/footer-slider3.jpg" alt=""></li>
                                     </ul>
                                 </div>
                             </div>
@@ -382,7 +385,7 @@
                 </div>
             </div>
             <div class="copy-rights">
-                <p>COPYRIGHT © 2013 By <a href="www.crunchpress.com" target="_blank">CrunchPress.com</a></p>
+                <p>COPYRIGHT ©  By Festiwale.pl</p>
             </div>
         </footer>
         <!--FOOTER END-->

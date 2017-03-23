@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.db import models
 from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -95,6 +96,7 @@ class Festival(models.Model):
     artists = models.ManyToManyField(Artist, verbose_name="Artyści")
     url = models.SlugField('url', unique_for_date='pub_date_start', blank=True)
     title = models.CharField(verbose_name="Nazwa festiwalu", max_length=255)
+    address = models.CharField(verbose_name="Adres", max_length=255)
     img = FilerImageField(null=True, blank=True, related_name="festiwal_img")
     description = RichTextUploadingField(blank=True, verbose_name="Opis")
     pub_date_start = models.DateTimeField("Data rozpoczęcia", blank=True, null=True)
@@ -102,6 +104,9 @@ class Festival(models.Model):
     seo_title = models.CharField(max_length=255, verbose_name="Seo tytuł :)", blank=True)
     seo_keywords = models.CharField(max_length=255, verbose_name="Seo słowa kluczowe :)", blank=True)
     seo_description = models.TextField(verbose_name="Seo opis :)", blank=True)
+
+    def get_absolute_url(self):
+        return reverse('details', kwargs={'url':self.url})
 
     class Meta:
         verbose_name = "Festiwal"

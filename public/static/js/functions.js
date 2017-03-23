@@ -18,7 +18,7 @@ jQuery(document).ready(function($){
 	//CountDown Element
 	if($('.defaultCountdown').length){
 		var austDay = new Date();
-		austDay = new Date(2014, 7 - 1, 26);
+		austDay = new Date(2014, 7, 26);
 		$('.defaultCountdown').countdown({until: austDay, format: 'dHMS'});
 		$('#year').text(austDay.getFullYear());
 	}
