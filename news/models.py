@@ -56,6 +56,7 @@ class News(models.Model):
     festivals = models.ManyToManyField(Festival, verbose_name="Festiwale")
     url = models.SlugField('url', unique_for_date='pub_date', blank=True)
     title = models.CharField(max_length=255, verbose_name="Tytuł", blank=True)
+    excerpt = models.TextField(verbose_name="Krótki opis")
     body = RichTextUploadingField(blank=True)
     pub_date = models.DateTimeField("Data publikacji", blank=True, null=True)
     img = FilerImageField(null=True, blank=True, related_name="news_img")

@@ -152,7 +152,13 @@
                                                 <li><i class="fa fa-clock-o"></i>{{ news.pub_date|date:'Y-m-d H:i' }}</li>
                                                 <!--<li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>-->
                                             </ul>
-                                            <p>{{ news.body|truncatechars:150|safe }}</p>
+                                            <p>
+                                                {% if news.excerpt %}
+                                                    {{ news.excerpt|truncatechars:150|safe }}
+                                                {% else %}
+                                                    {{ news.body|truncatechars:150|safe }}
+                                                {% endif %}    
+                                            </p>
                                             <a class="read-more" href="#">więcej</a>
                                         </div>
                                     </div>
@@ -168,7 +174,13 @@
                                                         </figure>
                                                         <div class="text">
                                                             <h2><a href="#">{{ news.title }}</a></h2>
-                                                            <p>{{ news.body|truncatechars:100|safe }}</p>
+                                                            <p>
+                                                                 {% if news.excerpt %}
+                                                                    {{ news.excerpt|truncatechars:150|safe }}
+                                                                {% else %}
+                                                                    {{ news.body|truncatechars:150|safe }}
+                                                                {% endif %} 
+                                                            </p>
                                                             <ul class="post-comments">
                                                                 <li><a href="#">{{ news.pub_date|date:'Y-m-d H:i' }}</a></li>
                                                                 <!--<li><a href="#">32 Comments</a></li>
@@ -213,7 +225,13 @@
                                                                     <li><a href="#"><i class="fa fa-clock-o"></i>{{ festival.pub_date_start|date:'Y-m-d H:i' }}</a></li>
                                                                     <!--<li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>-->
                                                                 </ul>
-                                                                <p>{{ festival.description|truncatechars:100|safe }}</p>
+                                                                <p>
+                                                                     {% if festival.excerpt %}
+                                                                        {{ festival.excerpt|truncatechars:150|safe }}
+                                                                    {% else %}
+                                                                        {{ festival.description|truncatechars:150|safe }}
+                                                                    {% endif %} 
+                                                                </p>
                                                                 <a href="{{ festival.get_absolute_url }}" class="read-more">więcej</a>
                                                             </div>
                                                         </div>
@@ -271,7 +289,13 @@
                                                                     <li><a href="#"><i class="fa fa-clock-o"></i>{{ festival.pub_date_start|date:'Y-m-d H:i' }}</a></li>
                                                                     <!--<li><a href="#"><i class="fa fa-comment-o"></i>125</a></li>-->
                                                                 </ul>
-                                                                <p>{{ festival.description|truncatechars:100|safe }}</p>
+                                                                 <p>
+                                                                     {% if festival.excerpt %}
+                                                                        {{ festival.excerpt|truncatechars:150|safe }}
+                                                                    {% else %}
+                                                                        {{ festival.description|truncatechars:150|safe }}
+                                                                    {% endif %} 
+                                                                </p>
                                                                 <a href="#" class="read-more">więcej</a>
                                                             </div>
                                                         </div>
@@ -325,7 +349,13 @@
                                         <a href="#"><i class="fa fa-link"></i></a>
                                         <a href="images/gallery-image.png" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
                                         <h4>{{ artist.title }}</h4>
-                                        <p>{{ artist.description|truncatechars:100|safe }}</p>
+                                        <p>
+                                            {% if artist.excerpt %}
+                                                {{ artist.excerpt|truncatechars:150|safe }}
+                                            {% else %}
+                                                {{ artist.description|truncatechars:150|safe }}
+                                            {% endif %} 
+                                        </p>
                                     </div>
                                 </li>
                             {% endfor %}

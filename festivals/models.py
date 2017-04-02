@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 from django.urls import reverse
 from django.db import models
 from django.contrib.auth.models import User
@@ -68,6 +69,7 @@ class Tag(models.Model):
 class Artist(models.Model):
 
     title = models.CharField(max_length=255, verbose_name="Tytuł", blank=True)
+    excerpt = models.TextField(verbose_name="Krótki opis")
     description = RichTextUploadingField(blank=True)
     img = FilerImageField(null=True, blank=True, related_name="artist_img")
     seo_title = models.CharField(max_length=255, verbose_name="Seo tytuł :)", blank=True)
@@ -98,6 +100,7 @@ class Festival(models.Model):
     title = models.CharField(verbose_name="Nazwa festiwalu", max_length=255)
     address = models.CharField(verbose_name="Adres", max_length=255)
     img = FilerImageField(null=True, blank=True, related_name="festiwal_img")
+    excerpt = models.TextField(verbose_name="Krótki opis")
     description = RichTextUploadingField(blank=True, verbose_name="Opis")
     pub_date_start = models.DateTimeField("Data rozpoczęcia", blank=True, null=True)
     pub_date_end = models.DateTimeField("Data zakończenia", blank=True, null=True)

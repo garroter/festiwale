@@ -58,7 +58,7 @@ class FestivalAdmin(admin.ModelAdmin):
     #pola w formularzu
     fieldsets = (
         ('', {
-            'fields': ('user', 'url', 'country', 'address', 'category', 'tags', 'artists', 'title', 'description', 'pub_date_start', 'pub_date_end',),
+            'fields': ('user', 'url', 'country', 'address', 'category', 'tags', 'artists', 'title', 'excerpt', 'description', 'pub_date_start', 'pub_date_end',),
         }),
         ('Media', {
             'classes': ('grp-collapse grp-closed',),
