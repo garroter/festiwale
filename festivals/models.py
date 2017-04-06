@@ -69,6 +69,7 @@ class Tag(models.Model):
 class Artist(models.Model):
 
     title = models.CharField(max_length=255, verbose_name="Tytuł", blank=True)
+    url = models.SlugField('url', blank=True)
     excerpt = models.TextField(verbose_name="Krótki opis")
     description = RichTextUploadingField(blank=True)
     img = FilerImageField(null=True, blank=True, related_name="artist_img")
@@ -77,6 +78,11 @@ class Artist(models.Model):
     seo_description = models.TextField(verbose_name="Seo opis :)", blank=True)
     status = models.BooleanField("Status")
 
+
+    def get_absolute_url(self):
+        return reverse('artist_details', kwargs={'url':self.url})
+
+
     class Meta:
         verbose_name = 'Artysta'
         verbose_name_plural = 'Artyści'
@@ -84,6 +90,7 @@ class Artist(models.Model):
 
     def __str__(self):
         return self.title
+
 
     def __unicode__(self):
         return self.title
