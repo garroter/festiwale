@@ -109,7 +109,7 @@ class Festival(models.Model):
     seo_description = models.TextField(verbose_name="Seo opis :)", blank=True)
 
     def get_absolute_url(self):
-        return reverse('details', kwargs={'url':self.url})
+        return reverse('festival_details', kwargs={'url':self.url})
 
     class Meta:
         verbose_name = "Festiwal"

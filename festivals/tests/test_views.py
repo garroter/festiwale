@@ -22,9 +22,17 @@ class FestivalsTest(TestCase):
     def test_details(self):
         
         model = Festival.objects.get(url='test')
-        response = self.client.get(reverse('details', kwargs={'url': model.url}))
+        # print(model.url)
+        response = self.client.get(reverse('festival_details', kwargs={'url': model.url}))
         self.assertEqual(response.status_code, 200)
         self.assertTrue('festival' in response.context)
         self.assertTrue('news' in response.context)
+
+
+    def test_latest_festivals(self):
+        
+        response = self.client.get(reverse('latest_festivals'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('festivals' in response.context)
         
         

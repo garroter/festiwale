@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 from festivals.models import Festival
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -65,6 +66,8 @@ class News(models.Model):
     seo_description = models.TextField(verbose_name="Seo opis :)", blank=True)
     status = models.BooleanField("Status")
 
+    def get_absolute_url(self):
+        return reverse('news_details', kwargs={'url':self.url})
 
     class Meta:
         verbose_name = 'Artykuł'

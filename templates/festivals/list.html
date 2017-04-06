@@ -12,33 +12,33 @@
                     <div class="span8">
                         <section class="blog-listing">
                             <!--POST ARTICLE START-->
-                            {% for news in news %}
+                            {% for festival in festivals %}
                                 <article>
                                     <figure>
-                                        <a href="blog-detail.html"><img src="{% thumbnail news.img 770x321 crop %}" alt=""></a>
+                                        <a href="blog-detail.html"><img src="{% thumbnail festival.img 770x321 crop %}" alt=""></a>
                                     </figure>
                                     <div class="text">
                                         <div class="post-type">
                                             <a href="blog-detail.html" class="type"><i class="fa fa-comments-o"></i></a>
                                             <a href="blog-detail.html" class="post-date">
-                                                <p>{{ news.pub_date|date:'M' }}</p>
-                                                <p class="post-m">{{ news.pub_date|date:'d' }}</p>
+                                                <p>{{ festival.pub_date_start|date:'M' }}</p>
+                                                <p class="post-m">{{ festival.pub_date_start|date:'d' }}</p>
                                             </a>
                                         </div>
-                                        <h4><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h4>
+                                        <h4><a href="{{ festival.get_absolute_url }}">{{ festival.title }}</a></h4>
                                         {% comment %}<a class="color">Integer ornare libero nisi. Duis ac magna urna.</a>{% endcomment %}
                                          <p>
-                                            {% if news.excerpt %}
-                                                {{ news.excerpt|truncatechars:150|safe }}
+                                            {% if festival.excerpt %}
+                                                {{ festival.excerpt|truncatechars:150|safe }}
                                             {% else %}
-                                                {{ news.body|truncatechars:150|safe }}
+                                                {{ festival.body|truncatechars:150|safe }}
                                             {% endif %} 
                                         </p>
-                                        <a href="{{ news.get_absolute_url }}" class="color pull-right">więcej</a>
+                                        <a href="{{ festival.get_absolute_url }}" class="color pull-right">więcej</a>
                                     </div>
                                     <div class="post-footer">
                                         <ul class="post-comments">
-                                        <li><a href="blog-detail.html"><i class="fa fa-user"></i>{{ news.user.username }}</a></li>
+                                        <li><a href="blog-detail.html"><i class="fa fa-user"></i>{{ festival.user.username }}</a></li>
                                         {% comment %}<li><a href="blog-detail.html"><i class="fa fa-heart-o"></i>1205</a></li>
                                         <li><a href="blog-detail.html"><i class="fa fa-comment-o"></i>125</a></li>{% endcomment %}
                                     </ul>
@@ -49,7 +49,7 @@
                                 </article>
                             {% endfor %}
 
-                            {% include 'pagination.html' with page_obj=page_obj paginator=paginator url='latest_news_pagination' %}
+                            {% include 'pagination.html' with page_obj=page_obj paginator=paginator url='latest_festivals_pagination' %}
                             
                         </section>
                     </div>

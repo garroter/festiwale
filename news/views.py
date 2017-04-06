@@ -1,5 +1,7 @@
 from django.conf import settings
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 from news.models import News
 
 
@@ -9,7 +11,7 @@ class Latest_news(ListView):
     query_set = News.objects.filter(status=True)
     template_name = 'news/list.html' 
     context_object_name = 'news'
-    paginate_by = 1
+    paginate_by = settings.PAGINATION
 
     # def quesry_set(self):
     #     queryset = super(Latest_news, self).get_queryset()
@@ -31,3 +33,11 @@ class Latest_news(ListView):
 
     #     context['list_exams'] = file_exams
     #     return context
+
+class Details(DetailView):
+
+    model = News
+    template_name = 'news/details.html' 
+    context_object_name = 'news'
+    slug_field = 'url'
+    slug_url_kwarg = 'url'

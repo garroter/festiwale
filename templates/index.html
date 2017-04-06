@@ -61,14 +61,14 @@
                           </button>
                                     <div class="nav-collapse collapse">
                                         <ul class="nav">
-                                            <li class="carrot first"><a href="blog.html">Strona główna</a></li>
-                                            <li class="blue2"><a href="travel.html">Festiwale</a>
+                                            <li class="carrot first"><a href="{% url 'home' %}">Strona główna</a></li>
+                                            <li class="blue2"><a href="{% url 'latest_festivals' %}">Festiwale</a>
                                                 <ul class="blue2">
                                                     <li><a href="health.html">Najbliższe</a></li>
                                                     <li><a href="health-beauty.html">Najwyżej oceniane</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="red"><a href="showtime.html">Aktualności</a></li>
+                                            <li class="red"><a href="{% url 'latest_news' %}">Aktualności</a></li>
 
                                             <li class="carrot"><a href="news-page.html">News</a></li>
                                             <li class="green"><a href="sports.html">Sports</a></li>
@@ -159,7 +159,7 @@
                                                     {{ news.body|truncatechars:150|safe }}
                                                 {% endif %}    
                                             </p>
-                                            <a class="read-more" href="#">więcej</a>
+                                            <a class="read-more" href="{{ news.get_absolute_url }}">więcej</a>
                                         </div>
                                     </div>
                                     {% endwith %}
@@ -173,7 +173,7 @@
                                                             <a href="#"><img alt="" src="{% thumbnail news.img 120x89 crop %}"></a>
                                                         </figure>
                                                         <div class="text">
-                                                            <h2><a href="#">{{ news.title }}</a></h2>
+                                                            <h2><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2>
                                                             <p>
                                                                  {% if news.excerpt %}
                                                                     {{ news.excerpt|truncatechars:150|safe }}
@@ -182,7 +182,7 @@
                                                                 {% endif %} 
                                                             </p>
                                                             <ul class="post-comments">
-                                                                <li><a href="#">{{ news.pub_date|date:'Y-m-d H:i' }}</a></li>
+                                                                <li><a href="{{ news.get_absolute_url }}">{{ news.pub_date|date:'Y-m-d H:i' }}</a></li>
                                                                 <!--<li><a href="#">32 Comments</a></li>
                                                                 <li>
                                                                     <div class="rating">

@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.shortcuts import get_object_or_404, render
+from django.views.generic import ListView
 from news.models import News
 from .models import Festival, Artist
 from sliders.models import Slide
@@ -15,6 +17,15 @@ def home(request):
 
 
 def details(request, url):
+    
     festival = get_object_or_404(Festival, url=url)
     news = News.objects.filter(festivals=festival.pk).all()
     return render(request, 'festivals/details.html', {'festival': festival, 'news': news})
+
+
+class Latest_festivals(ListView):
+    model = Festival
+    ordering = ['-pub_date_start']
+    template_name = 'festivals/list.html' 
+    context_object_name = 'festivals'
+    paginate_by = settings.PAGINATION

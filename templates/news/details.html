@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block slider %}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="main-contant">
+            <div class="container">
+                <div class="row">
+                    <div class="span8">
+                        <section class="blog-listing">
+                            <!--POST ARTICLE START-->
+                            <article>
+                                <figure>
+                                    <img src="{% thumbnail news.img 770x380 crop %}" alt="">
+                                </figure>
+                                <div class="text">
+                                    <div class="post-type">
+                                        <a href="#" class="type"><i class="fa fa-comments-o"></i></a>
+                                        <a href="#" class="post-date">
+                                            <p>{{ news.pub_date|date:'M' }}</p>
+                                            <p class="post-m">{{ news.pub_date|date:'d' }}</p>
+                                        </a>
+                                    </div>
+                                    <h4>{{ news.title }}</h4>
+                                        {{ news.body|safe }}
+                                    
+                                </div>
+                                <ul class="social-icons2">
+                                    <li><a class="facebook" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="github" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-github"></i></a></li>
+                                    <li><a class="linkedin" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a class="pinterest" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-pinterest"></i></a></li>
+                                    <li><a class="dribbble" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-dribbble"></i></a></li>
+                                    <li><a class="google" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a class="tumblr" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-tumblr"></i></a></li>
+                                    <li><a class="twitter" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="youtube" data-original-title="flickr" href="#" data-toggle="tooltip" title=""><i class="fa fa-youtube-square"></i></a></li>
+                                </ul>
+                            </article>
+                            <!--POST ARTICLE START-->
+                        </section>
+                        
+                    </div>
+                    <div class="span4">
+                        <div class="sidebar">
+                            <!--TAGS WIDGET START-->
+                            <div class="widget widget-tags">
+                                <h2>Tagi</h2>
+                                <ul>
+                                    {% for tag in news.tags.all %}
+                                        <li><a href="#">{{ tag.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                           
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
