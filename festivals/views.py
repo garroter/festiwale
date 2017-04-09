@@ -32,6 +32,19 @@ class Latest_festivals(ListView):
     paginate_by = settings.PAGINATION
 
 
+class Festivals_tags(ListView):
+    model = Festival
+    ordering = ['-pub_date_start']
+    template_name = 'festivals/list.html' 
+    context_object_name = 'festivals'
+    paginate_by = settings.PAGINATION
+
+
+    def get_queryset(self):
+
+        return Festival.objects.filter(tags__url__in=[self.kwargs['url']])
+
+
 class Artists_list(ListView):
     model = Artist
     query_set = Artist.objects.filter(status=True)

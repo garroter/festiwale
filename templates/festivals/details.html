@@ -35,7 +35,7 @@
                                     </ul>
                                     <div class="admin-timing">
                                         {% for artist in festival.artists.all %}
-                                            {{ artist.title }}
+                                            <a href="{{ artist.get_absolute_url }}">{{ artist.title }}</a>
                                         {% endfor %}
                                     </div>
                                     {{ festival.description|safe }}
@@ -237,7 +237,7 @@
                                 <h2>Tagi</h2>
                                 <ul>
                                     {% for tag in festival.tags.all %}
-                                        <li><a href="#">{{ tag.name }}</a></li>
+                                        <li><a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </div>

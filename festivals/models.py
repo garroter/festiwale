@@ -49,7 +49,11 @@ class Category(models.Model):
 class Tag(models.Model):
 
     name = models.CharField(max_length=255, verbose_name="Tag")
+    url = models.SlugField('url', blank=True)
     status = models.BooleanField("Status")
+
+    def get_absolute_url(self):
+        return reverse('festivals_tags', kwargs={'url':self.url})
 
     class Meta:
         verbose_name = "Tag"

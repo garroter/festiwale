@@ -32,12 +32,12 @@ class CategoryAdmin(admin.ModelAdmin):
 class TagAdmin(admin.ModelAdmin):
     
     #lista pol w gridzie
-    list_display = ('name', 'status',)
+    list_display = ('name', 'url', 'status',)
 
-    list_search = ['name',]
+    list_search = ['name', 'url']
 
     #globalna wyszukiwarka
-    search_fields = ('name', 'status',)
+    search_fields = ('name', 'url', 'status',)
 
 
 class ArtistAdmin(admin.ModelAdmin):
