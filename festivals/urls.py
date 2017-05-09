@@ -4,6 +4,8 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^(?P<url>[\w-]+)/$', views.festival_details,
+        name='festival_details'),
     url(r'^najblizsze/$', views.Latest_festivals.as_view(), name='latest_festivals'),
     url(r'^najblizsze/strona/(?P<page>\d+)/$',
         views.Latest_festivals.as_view(), name='latest_festivals_pagination'),
@@ -16,6 +18,4 @@ urlpatterns = [
     url(r'^artysci/strona/(?P<page>\d+)/$',
         views.Artists_list.as_view(), name='artists_list_pagination'),
 
-    url(r'^(?P<url>[\w-]+)/$', views.festival_details,
-        name='festival_details'),
 ]
