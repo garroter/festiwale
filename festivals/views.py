@@ -9,7 +9,8 @@ from sliders.models import Slide
 
 def home(request):
 
-    slider = Slide.objects.filter(slider__home=True, slider__status=True, status=True).all()
+    slider = Slide.objects.filter(
+        slider__home=True, slider__status=True, status=True).all()
     news = News.objects.all()[:5]
     festivals_pl = Festival.objects.filter(country=178).all()[:10]
     festivals_all = Festival.objects.exclude(country=178).all()[:10]
@@ -18,7 +19,7 @@ def home(request):
 
 
 def festival_details(request, url):
-    
+
     festival = get_object_or_404(Festival, url=url)
     news = News.objects.filter(festivals=festival.pk).all()
     return render(request, 'festivals/details.html', {'festival': festival, 'news': news})
@@ -27,7 +28,7 @@ def festival_details(request, url):
 class Latest_festivals(ListView):
     model = Festival
     ordering = ['-pub_date_start']
-    template_name = 'festivals/list.html' 
+    template_name = 'festivals/list.html'
     context_object_name = 'festivals'
     paginate_by = settings.PAGINATION
 
@@ -35,10 +36,9 @@ class Latest_festivals(ListView):
 class Festivals_tags(ListView):
     model = Festival
     ordering = ['-pub_date_start']
-    template_name = 'festivals/list.html' 
+    template_name = 'festivals/list.html'
     context_object_name = 'festivals'
     paginate_by = settings.PAGINATION
-
 
     def get_queryset(self):
 
@@ -48,15 +48,15 @@ class Festivals_tags(ListView):
 class Artists_list(ListView):
     model = Artist
     query_set = Artist.objects.filter(status=True)
-    template_name = 'artists/list.html' 
+    template_name = 'artists/list.html'
     context_object_name = 'artists'
     paginate_by = settings.PAGINATION
 
 
 class Artist_details(DetailView):
-    
+
     model = Artist
-    template_name = 'artists/details.html' 
+    template_name = 'artists/details.html'
     context_object_name = 'artist'
     slug_field = 'url'
     slug_url_kwarg = 'url'

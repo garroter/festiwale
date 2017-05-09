@@ -4,92 +4,80 @@ from ckeditor.widgets import CKEditorWidget
 
 from .models import Country, Category, Tag, Artist, Festival
 
+
 class FestivalAdminForm(forms.ModelForm):
-    
+
     description = forms.CharField(widget=CKEditorWidget())
 
+
 class CountryAdmin(admin.ModelAdmin):
-    
-    #lista pol w gridzie
-    list_display = ('name', 'status',)
 
-    list_search = ['name',]
+    list_display = ('name', 'status',)  # lista pol w gridzie
+    list_search = ['name', ]
+    search_fields = ('name', 'status',)  # globalna wyszukiwarka
 
-    #globalna wyszukiwarka
-    search_fields = ('name', 'status',)
 
 class CategoryAdmin(admin.ModelAdmin):
-    
-    #lista pol w gridzie
+
     list_display = ('name', 'status',)
-
-    list_search = ['name',]
-
-    #globalna wyszukiwarka
+    list_search = ['name', ]
     search_fields = ('name', 'status',)
 
 
 class TagAdmin(admin.ModelAdmin):
-    
-    #lista pol w gridzie
+
     list_display = ('name', 'url', 'status',)
-
     list_search = ['name', 'url']
-
-    #globalna wyszukiwarka
     search_fields = ('name', 'url', 'status',)
 
 
 class ArtistAdmin(admin.ModelAdmin):
 
-    #lista pol w gridzie
     list_display = ('title', 'status',)
-
-    list_search = ['title',]
-
-    #globalna wyszukiwarka
+    list_search = ['title', ]
     search_fields = ('title', 'status',)
 
 
 class FestivalAdmin(admin.ModelAdmin):
 
-    change_list_template = "admin/change_list_filter_sidebar.html"
+    change_list_template = 'admin/change_list_filter_sidebar.html'
 
-    #pola w formularzu
+    # pola w formularzu
     fieldsets = (
         ('', {
             'fields': ('user', 'url', 'country', 'address', 'category', 'tags', 'artists', 'title', 'excerpt', 'description', 'pub_date_start', 'pub_date_end',),
         }),
         ('Media', {
             'classes': ('grp-collapse grp-closed',),
-            'fields' : ('img',),
+            'fields': ('img',),
         }),
         ('SEO', {
             'classes': ('grp-collapse grp-closed',),
-            'fields' : ('seo_title', 'seo_keywords', 'seo_description',),
+            'fields': ('seo_title', 'seo_keywords', 'seo_description',),
         }),
 
     )
 
     list_editable = ('pub_date_start', 'pub_date_end', 'url',)
 
-    #lista pol w gridzie
-    list_display = ('title', 'url', 'category', 'pub_date_start', 'pub_date_end',)
+    # lista pol w gridzie
+    list_display = ('title', 'url', 'category',
+                    'pub_date_start', 'pub_date_end',)
 
-    #filtrowanie
+    # filtrowanie
     list_filter = ('category__name',)
 
-    list_search = ['title',]
+    list_search = ['title', ]
 
-    #globalna wyszukiwarka
-    search_fields = ('title', 'url','category__name',)
+    # globalna wyszukiwarka
+    search_fields = ('title', 'url', 'category__name',)
 
     prepopulated_fields = {'url': ('title',)}
 
     raw_id_fields = ('category', 'country', 'tags', 'artists',)
 
     autocomplete_lookup_fields = {
-        'fk': ['category', 'country',],
+        'fk': ['category', 'country', ],
         'm2m': ['tags', 'artists', ],
     }
 
@@ -98,7 +86,7 @@ class FestivalAdmin(admin.ModelAdmin):
 
     class TabularItemInline(admin.TabularInline):
         classes = ('grp-collapse grp-open',)
-    
+
     form = FestivalAdminForm
 
     # nadpisujemy pole uzytkkownika jesli nie zostalo wybrane
