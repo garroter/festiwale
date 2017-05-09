@@ -346,7 +346,7 @@
                                 <li>
                                     <img src="{% thumbnail artist.img 220x220 crop %}" alt="" >
                                     <div class="caption">
-                                        <a href="#"><i class="fa fa-link"></i></a>
+                                        <a href="{{ artist.get_absolute_url }}"><i class="fa fa-link"></i></a>
                                         <a href="images/gallery-image.png" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
                                         <h4>{{ artist.title }}</h4>
                                         <p>
