@@ -276,7 +276,7 @@
                                                     {% with festivals_all|first as festival %}
                                                         <div class="business">
                                                             <figure class="hover-style">
-                                                                <a href="#"><img src="{% thumbnail festival.img 267x208 crop %}" alt=""></a>
+                                                                <a href="{{ festival.get_absolute_url }}"><img src="{% thumbnail festival.img 267x208 crop %}" alt=""></a>
                                                                 <!--<div class="like-icon"><i class="fa fa-heart-o"></i></div>-->
                                                             </figure>
                                                             <div class="text">
@@ -296,7 +296,7 @@
                                                                         {{ festival.description|truncatechars:150|safe }}
                                                                     {% endif %} 
                                                                 </p>
-                                                                <a href="#" class="read-more">więcej</a>
+                                                                <a href="{{ festival.get_absolute_url }}" class="read-more">więcej</a>
                                                             </div>
                                                         </div>
                                                     {% endwith %}
