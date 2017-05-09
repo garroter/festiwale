@@ -82,7 +82,7 @@ class Artist(models.Model):
     seo_keywords = models.CharField(
         max_length=255, verbose_name='Seo słowa kluczowe :)', blank=True)
     seo_description = models.TextField(verbose_name='Seo opis :)', blank=True)
-    status = models.BooleanField('Status')
+    status = models.BooleanField('Status', default=True)
 
     def get_absolute_url(self):
         return reverse('artist_details', kwargs={'url': self.url})
@@ -106,7 +106,8 @@ class Festival(models.Model):
     country = models.ForeignKey(
         Country, on_delete=models.CASCADE, verbose_name='Kraj', blank=True, null=True)
     tags = models.ManyToManyField(Tag, verbose_name='Tagi')
-    artists = models.ManyToManyField(Artist, verbose_name='Artyści')
+    artists = models.ManyToManyField(
+        Artist, verbose_name='Artyści', blank=True)
     url = models.SlugField('url', unique_for_date='pub_date_start', blank=True)
     title = models.CharField(verbose_name='Nazwa festiwalu', max_length=255)
     address = models.CharField(verbose_name='Adres', max_length=255)
