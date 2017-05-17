@@ -35,6 +35,7 @@
 .flexslider .slides img {
 	width: 100%;
 	display: block;
+	max-height:300px;
 }
 .flex-pauseplay span {
 	text-transform: capitalize;

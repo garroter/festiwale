@@ -41,7 +41,6 @@ class Festivals_tags(ListView):
     paginate_by = settings.PAGINATION
 
     def get_queryset(self):
-
         return Festival.objects.filter(tags__url__in=[self.kwargs['url']])
 
 

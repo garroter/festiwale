@@ -44,7 +44,7 @@
             <div class="logo-container margin-bottom">
                 <div class="container">
                     <div class="logo">
-                        <a href="index.html"><img src="/static//assets/images/logo.png" alt=""></a>
+                        <a href="index.html"><img src="{% static 'images/logo.jpg' %}" alt=""></a>
                     </div>
                     <!--<div class="add">
 				<a href="#"><img src="/static/assets/assets/images/add.png" alt=""></a>
@@ -62,12 +62,7 @@
                                     <div class="nav-collapse collapse">
                                         <ul class="nav">
                                             <li class="carrot first"><a href="{% url 'home' %}">Strona główna</a></li>
-                                            <li class="blue2"><a href="{% url 'latest_festivals' %}">Festiwale</a>
-                                                <ul class="blue2">
-                                                    <li><a href="health.html">Najbliższe</a></li>
-                                                    <li><a href="health-beauty.html">Najwyżej oceniane</a></li>
-                                                </ul>
-                                            </li>
+                                            <li class="blue2"><a href="{% url 'latest_festivals' %}">Festiwale</a></li>
                                             <li class="red"><a href="{% url 'latest_news' %}">Aktualności</a></li>
 
                                             <li class="carrot"><a href="{% url 'artists_list' %}">Artyści</a></li>
@@ -344,19 +339,19 @@
                         <ul class="mycarousel jcarousel-skin-tango gallery">
                             {% for artist in artists %}
                                 <li>
-                                    <img src="{% thumbnail artist.img 220x220 crop %}" alt="" >
-                                    <div class="caption">
-                                        <a href="{{ artist.get_absolute_url }}"><i class="fa fa-link"></i></a>
-                                        <a href="images/gallery-image.png" data-rel="prettyPhoto[gallery1]"><i class="fa fa-search-plus"></i></a>
-                                        <h4>{{ artist.title }}</h4>
-                                        <p>
-                                            {% if artist.excerpt %}
-                                                {{ artist.excerpt|truncatechars:150|safe }}
-                                            {% else %}
-                                                {{ artist.description|truncatechars:150|safe }}
-                                            {% endif %} 
-                                        </p>
-                                    </div>
+                                    <a href="{{ artist.get_absolute_url }}">
+                                        <img src="{% thumbnail artist.img 220x220 crop %}" alt="" >
+                                        <div class="caption">
+                                            <h4>{{ artist.title }}</h4>
+                                            <p>
+                                                {% if artist.excerpt %}
+                                                    {{ artist.excerpt|truncatechars:150|safe }}
+                                                {% else %}
+                                                    {{ artist.description|truncatechars:150|safe }}
+                                                {% endif %} 
+                                            </p>
+                                        </div>
+                                     </a>   
                                 </li>
                             {% endfor %}
                         </ul>

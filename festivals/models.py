@@ -8,7 +8,7 @@ from filer.fields.image import FilerImageField
 
 class Country(models.Model):
 
-    name = models.CharField(max_length=255, verbose_name='Kraj')
+    name = models.CharField(max_length=255, verbose_name='Kraj', unique=True)
     status = models.BooleanField('Status')
 
     class Meta:
@@ -28,7 +28,8 @@ class Country(models.Model):
 
 class Category(models.Model):
 
-    name = models.CharField(max_length=255, verbose_name='Kategoria')
+    name = models.CharField(
+        max_length=255, verbose_name='Kategoria', unique=True)
     status = models.BooleanField('Status')
 
     class Meta:
@@ -48,8 +49,8 @@ class Category(models.Model):
 
 class Tag(models.Model):
 
-    name = models.CharField(max_length=255, verbose_name='Tag')
-    url = models.SlugField('url', blank=True)
+    name = models.CharField(max_length=255, verbose_name='Tag', unique=True)
+    url = models.SlugField('url', unique=True)
     status = models.BooleanField('Status')
 
     def get_absolute_url(self):
@@ -72,9 +73,9 @@ class Tag(models.Model):
 
 class Artist(models.Model):
 
-    title = models.CharField(max_length=255, verbose_name='Tytuł', blank=True)
-    url = models.SlugField('url', blank=True)
-    excerpt = models.TextField(verbose_name='Krótki opis')
+    title = models.CharField(max_length=255, verbose_name='Tytuł', unique=True)
+    url = models.SlugField('url', unique=True)
+    excerpt = models.TextField(verbose_name='Krótki opis', blank=True)
     description = RichTextUploadingField(blank=True)
     img = FilerImageField(null=True, blank=True, related_name='artist_img')
     seo_title = models.CharField(
@@ -108,9 +109,12 @@ class Festival(models.Model):
     tags = models.ManyToManyField(Tag, verbose_name='Tagi')
     artists = models.ManyToManyField(
         Artist, verbose_name='Artyści', blank=True)
-    url = models.SlugField('url', unique_for_date='pub_date_start', blank=True)
-    title = models.CharField(verbose_name='Nazwa festiwalu', max_length=255)
-    address = models.CharField(verbose_name='Adres', max_length=255)
+    url = models.SlugField(
+        'url', unique_for_date='pub_date_start', unique=True)
+    title = models.CharField(
+        verbose_name='Nazwa festiwalu', max_length=255, unique=True)
+    address = models.CharField(
+        verbose_name='Adres', max_length=255, blank=True)
     img = FilerImageField(null=True, blank=True, related_name='festiwal_img')
     excerpt = models.TextField(verbose_name='Krótki opis')
     description = RichTextUploadingField(blank=True, verbose_name='Opis')

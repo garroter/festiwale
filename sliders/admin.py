@@ -13,7 +13,7 @@ class SliderAdmin(admin.ModelAdmin):
     inlines = [
         SlideInline,
     ]
-
+    
     list_display = ('title', 'status',)  # lista pol w gridzie
     list_search = ['title', ]
     search_fields = ('title', 'status',)  # globalna wyszukiwarka

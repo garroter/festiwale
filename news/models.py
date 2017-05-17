@@ -10,7 +10,8 @@ from filer.fields.image import FilerImageField
 
 class Category(models.Model):
 
-    name = models.CharField(max_length=255, verbose_name='Kategoria')
+    name = models.CharField(
+        max_length=255, verbose_name='Kategoria', unique=True)
     status = models.BooleanField('Status')
 
     class Meta:
@@ -30,8 +31,8 @@ class Category(models.Model):
 
 class Tag(models.Model):
 
-    name = models.CharField(max_length=255, verbose_name='Tag')
-    url = models.SlugField('url', blank=True)
+    name = models.CharField(max_length=255, verbose_name='Tag', unique=True)
+    url = models.SlugField('url', unique=True)
     status = models.BooleanField('Status')
 
     def get_absolute_url(self):
@@ -57,11 +58,12 @@ class News(models.Model):
     user = models.ForeignKey(User, verbose_name='Użytkownik', blank=True)
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, verbose_name='Kategoria', blank=True, null=True)
-    tags = models.ManyToManyField(Tag, verbose_name='Tagi')
-    festivals = models.ManyToManyField(Festival, verbose_name='Festiwale')
-    url = models.SlugField('url', unique_for_date='pub_date', blank=True)
-    title = models.CharField(max_length=255, verbose_name='Tytuł', blank=True)
-    excerpt = models.TextField(verbose_name='Krótki opis')
+    tags = models.ManyToManyField(Tag, verbose_name='Tagi', blank=True)
+    festivals = models.ManyToManyField(
+        Festival, verbose_name='Festiwale', blank=True)
+    url = models.SlugField('url', unique_for_date='pub_date', unique=True)
+    title = models.CharField(max_length=255, verbose_name='Tytuł', unique=True)
+    excerpt = models.TextField(verbose_name='Krótki opis', blank=True)
     body = RichTextUploadingField(blank=True)
     pub_date = models.DateTimeField('Data publikacji', blank=True, null=True)
     img = FilerImageField(null=True, blank=True, related_name='news_img')

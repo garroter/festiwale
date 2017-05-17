@@ -1,7 +1,16 @@
 jQuery(document).ready(function($){
 	"use strict";
-	//Gallery Validation
 
+
+  $(window).load(function() {
+    console.log("asd");
+    $('.flexslider').flexslider({
+      animation: "slide"
+    });
+  });
+
+
+	//Gallery Validation
 
 	$('a[data-rel]').each(function () {
 		$(this).attr('rel', $(this).data('rel'));
@@ -116,11 +125,7 @@ jQuery(document).ready(function($){
     sync: "#carousel3"
   });
 });
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide"
-  });
-});
+
 
 
 
